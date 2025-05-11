@@ -10,5 +10,11 @@ if [ ! -f templates/cv_template.rml ]; then
     cp cv_template.rml templates/
 fi
 
+# Afficher des informations de débogage
+echo "Current directory: $(pwd)"
+echo "Files in current directory: $(ls -la)"
+echo "PORT environment variable: $PORT"
+echo "Files in templates directory: $(ls -la templates)"
+
 # Démarrer l'application avec Gunicorn
 exec gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --threads 8 --timeout 120
