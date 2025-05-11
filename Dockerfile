@@ -7,8 +7,6 @@ RUN apt-get update && apt-get install -y \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     libpng-dev \
-    libxml2-dev \
-    libxslt-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Créer le répertoire de travail
@@ -19,11 +17,25 @@ COPY requirements.txt .
 
 # Installer les dépendances Python
 RUN pip install --no-cache-dir -r requirements.txt
-# Copier le code de l'application
+
+# Copier tous les fichiers de l'application
 COPY . .
 
 # Créer les dossiers nécessaires
 RUN mkdir -p /app/output /app/data /app/templates
 
-# Définir la commande par défaut
-# CMD ["python", "generate_pdf.py"]
+# Copier le template RML dans le bon dossier
+RUN if [ -f cv_template.rml ]; then cp cv_template.rml templates/; fi
+
+# Rendre le script exécutable
+RUN chmod +x startup.sh
+
+# Variables d'environnement par défaut
+ENV PORT=8080
+ENV PYTHONUNBUFFERED=1
+
+# Exposer le port
+EXPOSE 8080
+
+# Utiliser startup.sh comme point d'entrée
+CMD ["./startup.sh"]
