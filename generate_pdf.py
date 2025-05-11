@@ -57,7 +57,12 @@ def generate_pdf_from_data(data, template_path, output_path):
         elements.append(Paragraph("Compétences", heading_style))
         
         # Organiser les compétences en tableau
-        skills = data.get('skills', [])
+        if isinstance(data, dict):
+            skills = data.get('skills', [])
+        elif isinstance(data, list) and len(data) > 0 and isinstance(data[0], dict):
+            skills = data[0].get('skills', [])
+        else:
+            skills = []
         skill_data = []
         row = []
         for i, skill in enumerate(skills):
