@@ -18,8 +18,7 @@ WORKDIR /app
 COPY requirements.txt .
 
 # Installer les dépendances Python
-RUN pip install --no-cache-dir -r requirements.txt
-
+RUN pip install --no-cache-dir -r requirements.txt && pip install -i "https://www.reportlab.com/pypi" rlextra
 # Copier le code de l'application
 COPY . .
 
