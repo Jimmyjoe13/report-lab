@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script de démarrage pour Railway
+# Script de démarrage pour Render
 
 # Afficher des informations de débogage
 echo "Starting application..."
@@ -39,8 +39,8 @@ echo "Python and dependencies verified"
 
 # Vérifier et définir le port
 if [ -z "$PORT" ]; then
-    export PORT=8080
-    echo "PORT was not set, defaulting to 8080"
+    export PORT=10000
+    echo "PORT was not set, defaulting to 10000"
 else
     echo "PORT is set to $PORT"
 fi
@@ -48,8 +48,8 @@ fi
 # S'assurer que PORT est bien un nombre
 if ! [[ "$PORT" =~ ^[0-9]+$ ]]; then
     echo "ERROR: PORT is not a valid number: $PORT"
-    export PORT=8080
-    echo "Using default PORT: 8080"
+    export PORT=10000
+    echo "Using default PORT: 10000"
 fi
 
 # Démarrer l'application avec Gunicorn
