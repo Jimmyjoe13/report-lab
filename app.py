@@ -16,6 +16,10 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.route('/health')
+def health():
+    return "OK", 200
+
 @app.route('/api/generate', methods=['POST'])
 def api_generate():
     try:
