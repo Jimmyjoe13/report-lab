@@ -26,4 +26,4 @@ COPY . .
 RUN mkdir -p /app/output /app/data /app/templates
 
 # Définir la commande par défaut
-CMD ["python", "generate_pdf.py"]
+# CMD ["python", "generate_pdf.py"]
