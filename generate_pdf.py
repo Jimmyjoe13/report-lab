@@ -84,7 +84,13 @@ def generate_pdf_from_data(data, template_path, output_path):
         
         # Expériences
         elements.append(Paragraph("Expériences professionnelles", heading_style))
-        for exp in data.get('experiences', []):
+        if isinstance(data, dict):
+            experiences = data.get('experiences', [])
+        elif isinstance(data, list) and len(data) > 0 and isinstance(data[0], dict):
+            experiences = data[0].get('experiences', [])
+        else:
+            experiences = []
+        for exp in experiences:
             exp_style = ParagraphStyle(
                 'ExpTitle',
                 parent=styles['Heading3'],
