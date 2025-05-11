@@ -36,48 +36,46 @@ def fill_template(template, data):
     filled = filled.replace('{{title}}', data.get('title', ''))
     filled = filled.replace('{{experience}}', str(data.get('experience', '')))
     
-    # Compétences
-    skills_xml = ""
-    for skill in data.get('skills', []):
-        skills_xml += f'<listItem><para>{skill}</para></listItem>\n'
-    filled = filled.replace('{{skills}}', skills_xml)
+    # Compétences - Création des lignes de tableau
+    skills = data.get('skills', [])
+    skills_rows = ""
+    row_count = (len(skills) + 3) // 4  # Arrondir au supérieur
     
-    # Niveaux de compétences
-    skill_levels_xml = ""
-    for skill in data.get('skillLevels', []):
-        name = skill.get('name', '')
-        level = skill.get('level', 0)
-        skill_levels_xml += f'<listItem><para>{name}: {level}/5</para></listItem>\n'
-    filled = filled.replace('{{skillLevels}}', skill_levels_xml)
+    for i in range(row_count):
+        skills_rows += "<tr>"
+        for j in range(4):
+            idx = i * 4 + j
+            if idx < len(skills):
+                skills_rows += f"<td><para style='Skill'>{skills[idx]}</para></td>"
+            else:
+                skills_rows += "<td></td>"
+        skills_rows += "</tr>\n"
     
-    # Langues
-    languages_xml = ""
-    for lang in data.get('languages', []):
-        language = lang.get('language', '')
-        level = lang.get('level', '')
-        languages_xml += f'<listItem><para>{language}: {level}</para></listItem>\n'
-    filled = filled.replace('{{languages}}', languages_xml)
+    filled = filled.replace('{{skills_rows}}', skills_rows)
     
     # Diplômes
     diplomas_xml = ""
     for diploma in data.get('diplomas', []):
         year = diploma.get('year', '')
         title = diploma.get('title', '')
-        diplomas_xml += f'<listItem><para>{year} - {title}</para></listItem>\n'
+        diplomas_xml += f"<para style='Normal'>{year} - {title}</para>\n"
     filled = filled.replace('{{diplomas}}', diplomas_xml)
     
-    # Résumé des expériences
-    exp_summary_xml = ""
+    # Résumé des expériences - Création des lignes de tableau
+    exp_summary_rows = ""
     for exp in data.get('experienceSummary', []):
         period = exp.get('period', '')
         duration = exp.get('duration', '')
         company = exp.get('company', '')
         role = exp.get('role', '')
-        exp_summary_xml += f'<listItem><para>{period} ({duration}) - {company} - {role}</para></listItem>\n'
-    filled = filled.replace('{{experienceSummary}}', exp_summary_xml)
+        exp_summary_rows += f"<tr><td><para style='Normal'>{period}</para></td>"
+        exp_summary_rows += f"<td><para style='Normal'>{duration}</para></td>"
+        exp_summary_rows += f"<td><para style='Normal'>{company}</para></td>"
+        exp_summary_rows += f"<td><para style='Normal'>{role}</para></td></tr>\n"
+    filled = filled.replace('{{experience_summary_rows}}', exp_summary_rows)
     
     # Expériences détaillées
-    experiences_xml = ""
+    experiences_details = ""
     for exp in data.get('experiences', []):
         period = exp.get('period', '')
         company = exp.get('company', '')
@@ -87,30 +85,28 @@ def fill_template(template, data):
         methodology = exp.get('methodology', '')
         team = exp.get('team', '')
         
-        experiences_xml += f'<h2>{period} - {company}</h2>\n'
-        experiences_xml += f'<para><b>Durée:</b> {duration}</para>\n'
-        experiences_xml += f'<para><b>Poste:</b> {role}</para>\n'
-        experiences_xml += f'<para><b>Projet:</b> {project}</para>\n'
-        experiences_xml += f'<para><b>Méthodologie:</b> {methodology}</para>\n'
-        experiences_xml += f'<para><b>Équipe:</b> {team}</para>\n'
+        experiences_details += f"<para style='ExpTitle'>{period} - {company}</para>\n"
+        experiences_details += f"<para style='ExpDuration'>Durée: {duration}</para>\n"
+        experiences_details += f"<para style='Normal'><b>Poste:</b> {role}</para>\n"
+        experiences_details += f"<para style='Normal'><b>Projet:</b> {project}</para>\n"
+        experiences_details += f"<para style='Normal'><b>Méthodologie:</b> {methodology}</para>\n"
+        experiences_details += f"<para style='Normal'><b>Équipe:</b> {team}</para>\n"
         
         # Responsabilités
-        experiences_xml += '<para><b>Responsabilités:</b></para>\n<ul>\n'
+        experiences_details += "<para style='Normal'><b>Responsabilités:</b></para>\n"
         for resp in exp.get('responsibilities', []):
-            experiences_xml += f'<li><para>{resp}</para></li>\n'
-        experiences_xml += '</ul>\n'
+            experiences_details += f"<para style='BulletItem'>• {resp}</para>\n"
         
         # Environnement technique
-        experiences_xml += '<para><b>Environnement technique:</b></para>\n<ul>\n'
+        experiences_details += "<para style='Normal'><b>Environnement technique:</b></para>\n"
         for env in exp.get('environment', []):
             category = env.get('category', '')
             tools = env.get('tools', '')
-            experiences_xml += f'<li><para>{category}: {tools}</para></li>\n'
-        experiences_xml += '</ul>\n'
+            experiences_details += f"<para style='BulletItem'>• {category}: {tools}</para>\n"
         
-        experiences_xml += '<spacer length="0.2in"/>\n'
+        experiences_details += "<spacer length='10mm'/>\n"
     
-    filled = filled.replace('{{experiences}}', experiences_xml)
+    filled = filled.replace('{{experiences_details}}', experiences_details)
     
     return filled
 
