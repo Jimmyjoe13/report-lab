@@ -33,8 +33,16 @@ def generate_pdf_from_data(data, template_path, output_path):
             textColor=colors.HexColor('#1a237e'),
             spaceAfter=20
         )
-        elements.append(Paragraph(f"{data.get('name', '')} - {data.get('title', '')}", title_style))
-        elements.append(Paragraph(f"{data.get('experience', '')} ans d'expérience", title_style))
+        # Vérifier si data est un dict ou une liste
+        if isinstance(data, dict):
+            elements.append(Paragraph(f"{data.get('name', '')} - {data.get('title', '')}", title_style))
+            elements.append(Paragraph(f"{data.get('experience', '')} ans d'expérience", title_style))
+        elif isinstance(data, list) and len(data) > 0 and isinstance(data[0], dict):
+            # Prendre le premier élément si c'est une liste de dicts
+            elements.append(Paragraph(f"{data[0].get('name', '')} - {data[0].get('title', '')}", title_style))
+            elements.append(Paragraph(f"{data[0].get('experience', '')} ans d'expérience", title_style))
+        else:
+            elements.append(Paragraph("Données invalides", title_style))
         elements.append(Spacer(1, 0.3*inch))
         
         # Compétences
