@@ -1,0 +1,170 @@
+{
+    "name": "YBE",
+    "title": "Développeur Java",
+    "experience": "7",
+    "skills": [
+      "Java (V8-17)", "SpringBoot", "Spring Batch", "Spring Security", 
+      "SQL", "Angular (V14)", 
+      "GitLab CI/CD", "SonarQube", 
+      "Artifactory", "Jira", 
+      "Architecture Rest", "Microservices", 
+      "API", "JUnit", 
+      "Kubernetes", "Scrum"
+    ],
+    "skillLevels": [
+      {"name": "Français", "level": 5},
+      {"name": "Anglais", "level": 4}
+    ],
+    "languages": [
+      {"language": "Français", "level": "Courant"},
+      {"language": "Anglais", "level": "Bilingue"}
+    ],
+    "diplomas": [
+      {"year": "2019", "title": "Master en ingénierie de conception et développement des applications"},
+      {"year": "2015", "title": "Licence en Electronique - automatiques et informatique"}
+    ],
+    "experienceSummary": [
+      {
+        "period": "Aout 21 – Octobre 24",
+        "duration": "3 ans 2 mois",
+        "company": "GRDF - Paris",
+        "role": "Ingénieur Full Stack"
+      },
+      {
+        "period": "Sept. 20 – Juil. 21",
+        "duration": "1 an",
+        "company": "La Poste",
+        "role": "Ingénieur Full Stack"
+      },
+      {
+        "period": "Oct. 19 – Sept. 20",
+        "duration": "1 an",
+        "company": "Advansys Groupe",
+        "role": "Ingénieur Full Stack"
+      },
+      {
+        "period": "Nov. 17 – Sept. 19",
+        "duration": "2 ans",
+        "company": "SAFRAN Engineering",
+        "role": "Ingénieur full stack"
+      }
+    ],
+    "experiences": [
+      {
+        "period": "Aout 21 – Octobre 24",
+        "company": "GRDF - Paris",
+        "duration": "3 ans 2 mois",
+        "role": "Ingénieur développement full stack",
+        "project": "Projet e_omni : application pour la gestion des techniciens afin d'exécuter leur intervention sur des compteurs de Gaz chez les particuliers et professionnels de la France",
+        "methodology": "Agile Scrum",
+        "team": "10 Développeurs : 1 chef de projet, 1 Tech Lead, 1 Développeur Back end 1 développeur Front, 2 AMOA",
+        "responsibilities": [
+          "Analyser les contrats de services et développement des web services pour (les applications mobiles, et les différentes SI)",
+          "Développement des parties en Kafka pour l'envoi des données au client",
+          "Implémentation et codage des spécifications métier",
+          "Développement des batchs pour un traitement massif de fichier de données données et partage des fichiers",
+          "Effectuer les tests unitaires, Intégration continue avec un pourcentage de 80% pour assurer la qualité de code",
+          "Assurer la qualité de code et revue de code",
+          "Déploiement de l'application dans différents environnements",
+          "Correction des incidents en PROD",
+          "Accompagnement des collaborateurs juniors dans l'équipe",
+          "Participation aux meetings scrum",
+          "Correction des anomalies",
+          "Maintenance corrective et évolutive du projet pour les différents environnements (Dev, Recette, Pre- Prod, Prod)"
+        ],
+        "environment": [
+          {"category": "Backend", "tools": "Spring Boot 3, Spring Security, Java 17, Webservice REST, Kafka"},
+          {"category": "Frontend", "tools": "Angular 14"},
+          {"category": "Base de données", "tools": "PostgreSQL"},
+          {"category": "Méthodologie et outils de gestion de projet", "tools": "Jira, Confluence"},
+          {"category": "Versionning et CI/CD", "tools": "GitLab CI/CD"},
+          {"category": "Tests et qualité de code", "tools": "JUnit 5, Sonar"}
+        ]
+      },
+      {
+        "period": "Septembre 20 – Juillet 2021",
+        "company": "La Poste",
+        "duration": "1 an",
+        "role": "Ingénieur développement full stack",
+        "project": "Projet E-prime : Application pour la gestion administrative et financière pour les différentes équipes de la Poste",
+        "methodology": "Agile Scrum",
+        "team": "5 Développeurs : 1 chef de projet / Tech Lead, 3 Développeur Back-end, 2 développeurs Front-End",
+        "responsibilities": [
+          "Analyser les contrats de services et développement des Web services Rest",
+          "Implémentation et codage des spécifications métier",
+          "Développement des batchs pour un traitement massif de données et partage des fichiers",
+          "Effectuer les tests unitaires, Intégration continue avec un pourcentage de 80% pour assurer la qualité de code",
+          "Assurer la qualité de code et revue de code",
+          "Correction des incidents PROD",
+          "Accompagnement des collaborateurs juniors dans l'équipe",
+          "Participation aux meetings scrum",
+          "Corrections des anomalies",
+          "Maintenance corrective et évolutive du projet pour les différents environnements (Dev, Recette, Pre-Prod, Prod)"
+        ],
+        "environment": [
+          {"category": "Backend", "tools": "Spring Boot, Spring Security, Spring Batch, Java 10, Webservice REST"},
+          {"category": "Frontend", "tools": "Angular 10"},
+          {"category": "Base de données", "tools": "MySQL"},
+          {"category": "Méthodologie et outils de gestion de projet", "tools": "Jira, Confluence"},
+          {"category": "Versionning et CI/CD", "tools": "Jenkins"},
+          {"category": "Tests et qualité de code", "tools": "JUnit 5, Sonar"}
+        ]
+      },
+      {
+        "period": "Octobre 2019 – Septembre 2020",
+        "company": "Advansys Groupe",
+        "duration": "1 an",
+        "role": "Ingénieur développement full stack",
+        "project": "Projet Advansys : projet (MES) Conception et Réalisation d'une application web pour le suivie des ateliers adaptés au besoin du client",
+        "methodology": "Kanban",
+        "team": "4 personnes : 2 Intégrateur ERP / 2 Développeur Full Stack",
+        "responsibilities": [
+          "Développement les spécifications et besoin métier",
+          "Déploiement de l'application chez les clients",
+          "Assurer la qualité de code et revue de code",
+          "Effectuer les tests unitaires, Intégration continue",
+          "Réaliser les développements et répondre aux questions et blocages techniques du client",
+          "Traitement des retours métier",
+          "Rédaction des documents techniques",
+          "Correction des anomalies"
+        ],
+        "environment": [
+          {"category": "Backend", "tools": "Spring Boot, Spring Batch, Java"},
+          {"category": "Frontend", "tools": "JSF PrimeFaces, Bootstrap"},
+          {"category": "Base de données", "tools": "MySQL"},
+          {"category": "Versionning et CI/CD", "tools": "GitLab"}
+        ]
+      },
+      {
+        "period": "Novembre 2017 – Septembre 2019",
+        "company": "SAFRAN",
+        "duration": "2 ans",
+        "role": "Ingénieur développement full stack",
+        "project": "Projet (OCSAM) Refonte de l'application de réservation des bancs et équipements d'essais de moteurs d'avions tout en assurant la résolution des incidents (Build et TMA) pour le Compte de SNECMA",
+        "methodology": "Agile Scrum",
+        "team": "3 personnes : 2 Développeur Back End, 1 chef de projet Tech Lead",
+        "responsibilities": [
+          "Analyse du besoin client",
+          "Rédaction des documents techniques",
+          "Participation à la conception de l'application",
+          "Assurer la maintenance corrective et évolutive de l'application",
+          "Étude technique et chiffrage",
+          "Participation à la conception de la solution",
+          "Prendre en charge les demandes d'évolution et accompagnement client",
+          "Réalisation et évolution de modules",
+          "Intégration et déploiement dans différents serveurs de dev",
+          "Revue de code (Validation technique et fonctionnelle)",
+          "Corrections des anomalies",
+          "Tests unitaires et tests d'intégration",
+          "Traitement des retours client et support"
+        ],
+        "environment": [
+          {"category": "Backend", "tools": "Spring Boot, Spring Batch, Java 7"},
+          {"category": "Frontend", "tools": "JSF PrimeFaces, Bootstrap"},
+          {"category": "Base de données", "tools": "MySQL"},
+          {"category": "Méthodologie et outils de gestion de projet", "tools": "Confluence, Jira"},
+          {"category": "Versionning et CI/CD", "tools": "GitLab"}
+        ]
+      }
+    ]
+  }

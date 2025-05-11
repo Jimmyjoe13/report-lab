@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  cv-generator:
+    build: .
+    container_name: cv-generator
+    volumes:
+      - ./data:/app/data
+      - ./templates:/app/templates
+      - ./output:/app/output
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: python generate_pdf.py

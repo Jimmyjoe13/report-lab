@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE document SYSTEM "rml.dtd">
+<document filename="cv.pdf">
+  
+  <template pageSize="(21cm, 29.7cm)" leftMargin="1cm" rightMargin="1cm" topMargin="1cm" bottomMargin="1cm">
+    <pageTemplate id="main">
+      <frame id="first" x1="1cm" y1="1cm" width="19cm" height="27.7cm"/>
+    </pageTemplate>
+  </template>
+  
+  <stylesheet>
+    <!-- Définition des polices -->
+    <paraStyle name="Title" fontName="Helvetica-Bold" fontSize="24" textColor="#FFFFFF" alignment="CENTER" spaceAfter="5"/>
+    <paraStyle name="SubTitle" fontName="Helvetica-Bold" fontSize="14" textColor="#000000" spaceBefore="5" spaceAfter="5"/>
+    <paraStyle name="SectionTitle" fontName="Helvetica-Bold" fontSize="16" textColor="#000000" spaceBefore="10" spaceAfter="5"/>
+    <paraStyle name="Normal" fontName="Helvetica" fontSize="11" textColor="#000000" spaceAfter="3"/>
+    <paraStyle name="Small" fontName="Helvetica" fontSize="9" textColor="#000000" spaceAfter="2"/>
+    <paraStyle name="BulletItem" fontName="Helvetica" fontSize="10" textColor="#000000" leftIndent="20" spaceAfter="2"/>
+    <paraStyle name="Skill" fontName="Helvetica" fontSize="11" textColor="#000000" spaceAfter="2"/>
+    <paraStyle name="Stars" fontName="Helvetica" fontSize="14" textColor="#1a237e" spaceAfter="2"/>
+    <paraStyle name="ExpTitle" fontName="Helvetica-Bold" fontSize="14" textColor="#000000" spaceBefore="10" spaceAfter="5"/>
+    <paraStyle name="ExpDuration" fontName="Helvetica" fontSize="11" textColor="#666666" spaceAfter="5"/>
+    
+    <!-- Styles pour les tableaux -->
+    <blockTableStyle id="SkillsTable">
+      <blockFont name="Helvetica" size="11"/>
+      <blockTextColor colorName="black"/>
+      <blockValign value="MIDDLE"/>
+      <blockPadding value="5"/>
+      <lineStyle kind="LINEBELOW" colorName="#DDDDDD" thickness="0.5"/>
+    </blockTableStyle>
+    
+    <blockTableStyle id="LanguageTable">
+      <blockFont name="Helvetica" size="11"/>
+      <blockTextColor colorName="black"/>
+      <blockValign value="MIDDLE"/>
+      <blockPadding value="5"/>
+      <lineStyle kind="LINEBELOW" colorName="#DDDDDD" thickness="0.5"/>
+      <lineStyle kind="LINEAFTER" colorName="#DDDDDD" thickness="0.5" start="0,0" stop="0,-1"/>
+    </blockTableStyle>
+    
+    <blockTableStyle id="SummaryTable">
+      <blockFont name="Helvetica" size="10"/>
+      <blockTextColor colorName="black"/>
+      <blockValign value="MIDDLE"/>
+      <blockPadding value="5"/>
+      <lineStyle kind="LINEBELOW" colorName="#DDDDDD" thickness="0.5"/>
+      <lineStyle kind="LINEAFTER" colorName="#DDDDDD" thickness="0.5"/>
+    </blockTableStyle>
+  </stylesheet>
+  
+  <story>
+    <!-- Header avec KLANIK -->
+    <para style="Normal" textColor="#1a237e" alignment="CENTER">
+      <font size="36" color="#1a237e">KLANIK</font>
+    </para>
+    <para style="Small" textColor="#1a237e" alignment="CENTER">
+      HUMAN-MADE TECHNOLOGY
+    </para>
+    
+    <spacer length="5mm"/>
+    
+    <!-- Dossier Technique -->
+    <blockTable colWidths="19cm" style="SkillsTable">
+      <tr>
+        <td background="#1a237e">
+          <para style="Title">DOSSIER TECHNIQUE</para>
+        </td>
+      </tr>
+    </blockTable>
+    
+    <!-- Informations du candidat -->
+    <blockTable colWidths="19cm" style="SkillsTable">
+      <tr>
+        <td background="#F5F5DC">
+          <para style="SectionTitle" alignment="CENTER">{{name}} | {{title}} | {{experience}} ans d'expérience</para>
+        </td>
+      </tr>
+    </blockTable>
+    
+    <!-- Compétences -->
+    <spacer length="5mm"/>
+    <para style="SectionTitle" textColor="#1a237e">◉ Compétences</para>
+    
+    <blockTable colWidths="4.5cm,2cm,4.5cm,2cm" style="SkillsTable">
+      {{skills_rows}}
+    </blockTable>
+    
+    <!-- Langues -->
+    <spacer length="5mm"/>
+    <blockTable colWidths="9.5cm,9.5cm" style="LanguageTable">
+      <tr>
+        <td><para style="SubTitle">Français</para></td>
+        <td><para style="SubTitle">Courant</para></td>
+      </tr>
+      <tr>
+        <td><para style="SubTitle">Anglais</para></td>
+        <td><para style="SubTitle">Bilingue</para></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <para style="Small" textColor="#666666">★★★★★ Excellent : Maîtrise et fluidité d'expression dans le domaine.</para>
+          <para style="Small" textColor="#666666">★★★★☆ Courant : Compréhension et expression courantes sur des thèmes simples.</para>
+          <para style="Small" textColor="#666666">★★★☆☆ Intermédiaire : Compréhension et expression élémentaires.</para>
+          <para style="Small" textColor="#666666">★★☆☆☆ Débutant : Quelques expressions de base connues.</para>
+          <para style="Small" textColor="#666666">★☆☆☆☆ Faible : Je n'ai aucune notion dans cette langue.</para>
+        </td>
+      </tr>
+    </blockTable>
+    
+    <!-- Diplômes -->
+    <spacer length="5mm"/>
+    <para style="SectionTitle" textColor="#1a237e">◉ Diplômes</para>
+    {{diplomas}}
+    
+    <!-- Synthèse des expériences -->
+    <spacer length="5mm"/>
+    <para style="SectionTitle" textColor="#1a237e">◉ Synthèse des expériences professionnelles</para>
+    
+    <blockTable colWidths="4cm,2.5cm,6cm,6.5cm" style="SummaryTable">
+      <tr>
+        <td><para style="SubTitle">Période</para></td>
+        <td><para style="SubTitle">Durée</para></td>
+        <td><para style="SubTitle">Entreprise</para></td>
+        <td><para style="SubTitle">Rôle</para></td>
+      </tr>
+      {{experience_summary_rows}}
+    </blockTable>
+    
+    <!-- Expériences détaillées -->
+    <spacer length="10mm"/>
+    <para style="SectionTitle" textColor="#1a237e">◉ Expériences professionnelles</para>
+    
+    {{experiences_details}}
+    
+  </story>
+</document>
