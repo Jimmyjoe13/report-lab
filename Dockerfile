@@ -17,8 +17,11 @@ WORKDIR /app
 # Copier les fichiers requirements
 COPY requirements.txt .
 
+# Copier la configuration pip pour authentification privée
+COPY pip.conf /etc/pip.conf
+
 # Installer les dépendances Python
-RUN pip install --no-cache-dir -r requirements.txt && pip install -i "https://www.reportlab.com/pypi" rlextra
+RUN pip install --no-cache-dir -r requirements.txt && pip install rlextra
 # Copier le code de l'application
 COPY . .
 
