@@ -5,7 +5,7 @@
 # Afficher des informations de débogage
 echo "Starting application..."
 echo "Current directory: $(pwd)"
-echo "PORT environment variable: ${PORT}"
+echo "PORT environment variable: $PORT"
 
 # Créer les dossiers nécessaires
 mkdir -p templates data output
