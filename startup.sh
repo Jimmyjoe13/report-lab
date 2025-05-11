@@ -38,11 +38,11 @@ pip list | grep Flask
 echo "Python and dependencies verified"
 
 # Vérifier et définir le port
-if [ -z "${PORT}" ]; then
+if [ -z "$PORT" ]; then
     export PORT=8080
     echo "PORT was not set, defaulting to 8080"
 else
-    echo "PORT is set to ${PORT}"
+    echo "PORT is set to $PORT"
 fi
 
 # S'assurer que PORT est bien un nombre
