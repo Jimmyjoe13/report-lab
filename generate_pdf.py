@@ -126,8 +126,17 @@ def generate_pdf_from_data(data, template_path, output_path):
         
         # Diplômes
         elements.append(Paragraph("Formation", heading_style))
-        for diploma in data.get('diplomas', []):
-            elements.append(Paragraph(f"{diploma.get('year', '')} - {diploma.get('title', '')}", styles['Normal']))
+        if isinstance(data, dict):
+            diplomas = data.get('diplomas', [])
+        elif isinstance(data, list) and len(data) > 0 and isinstance(data[0], dict):
+            diplomas = data[0].get('diplomas', [])
+        else:
+            diplomas = []
+        if isinstance(diplomas, list):
+            for diploma in diplomas:
+                elements.append(Paragraph(f"{diploma.get('year', '')} - {diploma.get('title', '')}", styles['Normal']))
+        else:
+            elements.append(Paragraph("Données invalides pour les diplômes", styles['Normal']))
         
         # Générer le PDF
         doc.build(elements)
