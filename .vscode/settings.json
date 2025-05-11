@@ -1,0 +1,25 @@
+{
+  "cSpell.enabled": true,
+  "cSpell.language": "en,fr",
+  "cSpell.customDictionaries": {
+    "project-words": {
+      "name": "Project Dictionary",
+      "path": "${workspaceRoot}/.cspell.json",
+      "description": "Words used in this project",
+      "addWords": true
+    }
+  },
+  "cSpell.dictionaries": [
+    "project-words"
+  ],
+  "cSpell.ignorePaths": [
+    "node_modules/**",
+    "venv/**",
+    "env/**",
+    ".git/**",
+    "**/*.min.js",
+    "**/*.min.css",
+    "output/**",
+    "data/**"
+  ]
+}
