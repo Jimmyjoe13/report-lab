@@ -7,7 +7,7 @@ import io
 from datetime import datetime
 from flask import Flask, jsonify, send_file, request, render_template_string
 from werkzeug.utils import secure_filename
-from generate_pdf import generate_pdf_from_data, load_template
+from generate_pdf import generate_pdf_from_data, load_template, fill_template
 
 app = Flask(__name__)
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16 MB max
@@ -229,26 +229,23 @@ def api_generate():
             return jsonify({"error": "Données JSON manquantes"}), 400
         
         # Générer le PDF en mémoire
-        pdf_buffer = io.BytesIO()
-        template_path = os.path.join('templates', 'cv_template.rml')
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        filename = f"cv_{timestamp}.pdf"
+        output_path = os.path.join('output', filename)
         
-        # Utiliser la fonction adaptée pour générer en mémoire
-        from generate_pdf import fill_template, load_template
-        from rlextra.rml2pdf import rml2pdf
+        # Générer le PDF
+        success = generate_pdf_from_data(cv_data, None, output_path)
         
-        template = load_template(template_path)
-        filled_template = fill_template(template, cv_data)
-        rml2pdf.go(filled_template.encode('utf-8'), pdf_buffer)
-        
-        pdf_buffer.seek(0)
-        
-        # Retourner le PDF directement
-        return send_file(
-            pdf_buffer,
-            mimetype='application/pdf',
-            as_attachment=True,
-            download_name=f"cv_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf"
-        )
+        if success:
+            # Retourner le PDF
+            return send_file(
+                output_path,
+                mimetype='application/pdf',
+                as_attachment=True,
+                download_name=filename
+            )
+        else:
+            return jsonify({"error": "Erreur lors de la génération du PDF"}), 500
         
     except Exception as e:
         return jsonify({"error": str(e)}), 500
