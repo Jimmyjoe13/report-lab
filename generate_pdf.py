@@ -1,3 +1,11 @@
+import os
+from reportlab.lib import colors
+from reportlab.lib.pagesizes import letter
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
+from reportlab.lib.units import inch
+
+
 def generate_pdf_from_data(data, template_path, output_path):
     """Génère le PDF à partir de données déjà chargées"""
     try:
