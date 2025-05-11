@@ -1,13 +1,17 @@
 {
-    "$schema": "https://railway.app/railway.schema.json",
-    "build": {
-      "builder": "NIXPACKS"
-    },
-    "deploy": {
-      "numReplicas": 1,
-      "healthcheckPath": "/health",
-      "healthcheckTimeout": 30,
-      "sleepApplication": false,
-      "restartPolicyMaxRetries": 3
+  "$schema": "https://railway.app/railway.schema.json",
+  "build": {
+    "builder": "Dockerfile",
+    "args": {
+      "REPORTLAB_USERNAME": "jimmygay13180@gmail.com",
+      "REPORTLAB_PASSWORD": "7@m41Dx1gpE5q@9EB7UN"
     }
+  },
+  "deploy": {
+    "numReplicas": 1,
+    "healthcheckPath": "/health",
+    "healthcheckTimeout": 30,
+    "sleepApplication": false,
+    "restartPolicyMaxRetries": 3
   }
+}
