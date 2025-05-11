@@ -1,3 +1,39 @@
+from flask import Flask, request, render_template, send_file, jsonify
+import os
+import generate_pdf
+
+app = Flask(__name__)
+
+from flask import Flask, request, render_template, send_file, jsonify
+import os
+import generate_pdf
+import json
+import tempfile
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/api/generate', methods=['POST'])
+def api_generate():
+    try:
+        data = request.get_json(force=True)
+    except Exception as e:
+        return f"Erreur dans le JSON: {str(e)}", 400
+
+    with tempfile.NamedTemporaryFile(delete=False, suffix='.pdf') as tmp_file:
+        output_path = tmp_file.name
+
+    template_path = os.path.join('templates', 'cv_template.rml')
+    success = generate_pdf.generate_pdf_from_data(data, template_path, output_path)
+
+    if not success:
+        return "Erreur lors de la génération du PDF", 500
+
+    return send_file(output_path, mimetype='application/pdf', as_attachment=True, download_name='cv.pdf')
+
 if __name__ == '__main__':
     # Copier le template par défaut s'il n'existe pas
     template_path = os.path.join('templates', 'cv_template.rml')
